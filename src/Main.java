@@ -1,13 +1,10 @@
-import netscape.security.UserTarget;
-
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main (String[] args){
         System.out.println("1 - угадываем номер, 2 - угадываем слово.");
-        switch (getNumberFromConsole()) {
+        switch (getNumberFromConsole()){
             case 1:
                 guessNumber();
                 break;
@@ -74,16 +71,16 @@ public class Main {
         while (!(userWord.equals(expectedWord)));
     }
     static void doAdvise(String userWord, String expectedWord){
-        String advise = "";
+        StringBuilder advise = new StringBuilder();
         for (int i = 0; i < 15; i++){
             if (i >= userWord.length() || i >= expectedWord.length()){
-                advise += "#";
+                advise.append("#");
             }
             else if (userWord.charAt(i) == expectedWord.charAt(i)){
-                advise += userWord.charAt(i);
+                advise.append(userWord.charAt(i));
             }
             else{
-                advise += i;
+                advise.append(i);
             }
         }
         System.out.println(advise);
